@@ -9,12 +9,16 @@ import * as Views from '@/views';
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Views.Home />} />
-        <Route path="/products" element={<Views.Products />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Views.Home />} />
+          <Route path="/products" element={<Views.Products />} />
+        </Routes>
+      </BrowserRouter>
+      
+    </>
   )
 }
 
