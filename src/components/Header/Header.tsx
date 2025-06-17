@@ -20,6 +20,8 @@ const Header: FC<HeaderProps> = ({children}) => {
    return(
    <HeaderWrapper data-testid="Header" className="navbar bg-primary text-white p-3">
       {children}
+      <hr/>
+      <RouterLink></RouterLink>
    </HeaderWrapper>
    );
 
