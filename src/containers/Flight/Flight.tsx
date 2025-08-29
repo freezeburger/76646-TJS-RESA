@@ -10,7 +10,6 @@ import * as Hooks from '@/hooks';
 import './Flight.style.css';
 import { FlightProps } from './Flight.types';
 import { FlightDisplay } from '@/types/flight.model';
-import { get } from 'react-hook-form';
 
 
 const getAirlineLogo = (code: FlightDisplay['airline']) => {

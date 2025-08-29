@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const AppBarWrapper = styled.div`
+    z-index: 100;
     padding: 10px;
     margin-bottom: 20px;
     background-color: rgba(140, 193, 247, 1);
