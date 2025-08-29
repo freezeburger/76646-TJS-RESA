@@ -9,6 +9,8 @@
 import { useEffect, useState } from "react";
 import { FlightLogic } from "./Flight.types";
 import { FlightDisplay, FlightModel } from "@/types/flight.model";
+import { useStore } from "@/hooks";
+import { data } from "react-router";
 
 
 const getFlights = async () => {
@@ -36,9 +38,17 @@ export const useLogic = ():FlightLogic => {
 
     const [flights, setFlights] = useState<FlightDisplay[]>([]);
 
+    const {dispatch,ActionType} = useStore();
+
     
     useEffect(() => {
-        getFlights().then(batchToFlightDisplay).then(setFlights);
+        getFlights()
+            .then( data => {
+                dispatch({ type: ActionType.FLIGHT_UPDATE, payload: data });
+                return data;
+            })
+            .then(batchToFlightDisplay)
+            .then(setFlights);
     }, []);
 
 

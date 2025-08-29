@@ -20,7 +20,7 @@ const Notifications: FC<NotificationsProps> = () => {
 
    return (
    <div className="Notifications" data-testid="Notifications">
-      <UI.Header>Notifications</UI.Header>
+      <UI.Header size='small'>Notifications</UI.Header>
       <UI.Main>
 
       <h1> There are {state.flights.length} active</h1>
