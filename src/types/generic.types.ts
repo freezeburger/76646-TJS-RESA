@@ -1,7 +1,7 @@
 /**
 * @description Doit être un identifiant unique pour un item au sein d'une collection.
 */
-export type UniqueId = number;
+export type UniqueId = number | string;
  
 /**
 * @description Chaîne de caractères de longueur variable.

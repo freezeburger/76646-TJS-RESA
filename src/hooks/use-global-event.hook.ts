@@ -34,3 +34,4 @@ export const useGlobalEvent = (eventName:EventName, callback:Callback )=> {
     },[eventName,callback]) // 5. Dépendances de useEffect
    
 }
+

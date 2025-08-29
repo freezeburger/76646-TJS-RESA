@@ -13,15 +13,26 @@ import { useState } from "react";
  
 interface NavigationObject<T> {
     index: number;
-    value: T | null;
+    value: T[] | null;
     previous: () => void;
     next: () => void;
 }
+
+const INVALID_ARRAY_INDEX = -1;
  
-export const useArrayNavigation = <DataType>(array:DataType[], initialIndex:number = 0):NavigationObject<DataType> => {
+export const useArrayNavigation = <DataType>(
+    array:DataType[], 
+    initialIndex = 0,
+    count = 1
+    ):NavigationObject<DataType> => {
+
+    //  État local pour suivre l'index actuel
+    const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
+    const [value, setValue] = useState<DataType[]>(array.slice(currentIndex,count + currentIndex) as DataType[]);
+
     // 1. Vérification si le tableau est vide
     if (array.length === 0) {
-        return { index: -1, value: null, previous: () => {}, next: () => {} };
+        return { index: INVALID_ARRAY_INDEX, value: null, previous: () => {}, next: () => {} };
     }
  
     // 2. Vérification si l'index initial est en dehors des limites du tableau
@@ -30,20 +41,16 @@ export const useArrayNavigation = <DataType>(array:DataType[], initialIndex:numb
         initialIndex = 0;
     }
  
-    // 3. État local pour suivre l'index actuel
-    const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
-    const [value, setValue] = useState<DataType>(array[currentIndex]);
- 
     // 4. Fonction pour aller à l'élément précédent
     const previous = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + array.length) % array.length);
-        setValue(array[currentIndex]);
+        setValue(array.slice(currentIndex,count + currentIndex) as DataType[]);
     };
  
     // 5. Fonction pour aller à l'élément suivant
     const next = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % array.length);
-        setValue(array[currentIndex]);
+        setValue(array.slice(currentIndex,count + currentIndex) as DataType[]);
     };
  
     return { index: currentIndex, value, previous, next };

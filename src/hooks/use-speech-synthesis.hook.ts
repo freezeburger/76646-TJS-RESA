@@ -41,3 +41,5 @@ export const useSpeechSynthesis = (text:string):{speak:()=>void} => {
         window.speechSynthesis.speak(utterance)
     }, [text]) })    
 }
+
+

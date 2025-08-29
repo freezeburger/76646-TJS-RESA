@@ -1,9 +1,9 @@
 /* Global Imports */
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Link, Route, Routes } from 'react-router'
 
 /* Application Level Imports */
-// import * as UI from '@/components';
-// import * as Views from '@/views';
+import * as UI from '@/components';
+import * as Views from '@/views';
 
 
 function App() {
@@ -12,10 +12,17 @@ function App() {
     <>
 
       <BrowserRouter>
+
+        <UI.AppBar />
+        <UI.Navigation />
+
         <Routes>
-          <Route path="/" element={ 'HOME '} />
-          <Route path="/flights" element={'FLIGHTS'} />
+          <Route path="/" element={ <Views.Home/>} />
+          <Route path="/flights" element={ <Views.Flights/> } />
+          <Route path="/notifications" element={ <Views.Notifications/> } />
+          <Route path="/dashboard" element={ <Views.Dashboard/> } />
         </Routes>
+        
       </BrowserRouter>
       
     </>

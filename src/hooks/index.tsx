@@ -1,6 +1,4 @@
 
-export default {}
-
 /* Application Hooks */
 
 
@@ -11,3 +9,5 @@ export { useSpeechSynthesis } from './use-speech-synthesis.hook'
 
  
 /* External Hooks */
+export { useDocumentTitle } from '@uidotdev/usehooks';
+export { useForm } from 'react-hook-form';
