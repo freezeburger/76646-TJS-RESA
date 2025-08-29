@@ -3,7 +3,7 @@ import {ActionType, store} from "@/store/store";
 
 
 export const useStore = () => {
-   const [state, setState] = useState({});
+   const [state, setState] = useState(store.getState());
 
    useEffect(() => {
       return store.subscribe(() => setState(store.getState()));

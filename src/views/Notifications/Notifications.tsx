@@ -16,10 +16,16 @@ const Notifications: FC<NotificationsProps> = () => {
 
    Hooks.useDocumentTitle('Notifications View');
 
+   const { state } = Hooks.useStore();
+
    return (
    <div className="Notifications" data-testid="Notifications">
       <UI.Header>Notifications</UI.Header>
-      <UI.Main>Notifications Content</UI.Main>
+      <UI.Main>
+
+      <h1> There are {state.flights.length} active</h1>
+
+      </UI.Main>
       <UI.Footer />
    </div>
    )
